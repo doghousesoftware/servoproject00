@@ -1,8 +1,5 @@
-input.onPinPressed(TouchPin.P0, function () {
-    countSpeed(0)
-})
 function stdServo (angle: number) {
-    servos.P0.setAngle(angle)
+    servos.P1.setAngle(angle)
 }
 function countAngle (incdec: number) {
     if (incdec == 1) {
@@ -14,8 +11,8 @@ function countAngle (incdec: number) {
             basic.showNumber(angleCounter)
         }
     } else {
-        if (angleCounter < 180 && angleCounter >= 0) {
-            angleCounter += 0 - 10
+        if (angleCounter < 180 && angleCounter > 0) {
+            angleCounter += -10
             basic.showNumber(angleCounter)
             stdServo(angleCounter)
         } else {
@@ -24,12 +21,9 @@ function countAngle (incdec: number) {
     }
 }
 input.onButtonPressed(Button.A, function () {
-    countSpeed(1)
-})
-input.onButtonPressed(Button.B, function () {
     countAngle(1)
 })
-input.onPinPressed(TouchPin.P1, function () {
+input.onButtonPressed(Button.B, function () {
     countAngle(0)
 })
 function countSpeed (incdec: number) {
@@ -43,7 +37,7 @@ function countSpeed (incdec: number) {
         }
     } else {
         if (speedCounter < 100 && speedCounter > -100) {
-            speedCounter += 0 - 10
+            speedCounter += -10
             basic.showNumber(speedCounter)
             contServo(speedCounter)
         } else {
